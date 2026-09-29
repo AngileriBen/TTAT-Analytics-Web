@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs and local previews
+*.log
+tmp/
+
+# Safety net: credentials must never enter this public repository
+.env
+.env.*
+client_secret*.json
+*credentials*.json
+*.pem
+*.key
+*.p12
+token*.json
