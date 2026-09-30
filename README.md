@@ -2,9 +2,18 @@
 
 This is the public website for the **TTAT Analytics** OAuth application: the homepage and privacy policy that Google's OAuth consent screen links to. TTAT Analytics is a private, read-only analytics utility used by the operator of the Thirty Three And A Third YouTube channel. The application itself (TTAT Studio Tool 07) is **not** part of this repository.
 
-- Production URL (after publication): https://analytics.lyfeisacircus.com/
+- Production URL: https://analytics.lyfeisacircus.com/
 - Homepage: `index.html` · Privacy Policy: `privacy/index.html` (served at `/privacy/`)
 - Operator: Thirty Three And A Third · Contact: thirtythreeandathirdtv@gmail.com
+
+## Implementation status (September 29, 2026)
+
+- **OAuth sign-in (Tool 07):** working. Read-only scopes only (`youtube.readonly`, `yt-analytics.readonly`); the refresh token is kept in the macOS Keychain.
+- **Live collection:** working, for the Thirty Three And A Third channel only.
+- **Storage:** active, on the operator's Mac in TTAT Analytics' Application Support area, outside the shared TTAT production storage and its backups. New logs are kept there as well.
+- **Compliance lifecycle controls:** implemented (sign-out with revocation, data deletion, authorization re-checks, 30-day metadata expiry, removed-video purge). They run when the operator runs Tool 07; nothing runs in the background.
+- **This website:** informational and privacy-policy infrastructure only. It never contains or displays channel analytics.
+- **Dashboard:** separate work, not yet complete.
 
 ## What this site is (and is not)
 
@@ -26,10 +35,10 @@ CNAME                 Custom domain for GitHub Pages: analytics.lyfeisacircus.co
 .gitignore            Keeps macOS, editor and credential-like files out of Git
 ```
 
-## Before publishing
+## Updating the policy
 
-1. **Effective date.** Update the single marked line in `privacy/index.html` (search for `EFFECTIVE DATE`) to the actual publication date, including the `datetime` attribute.
-2. Review both pages one final time against the current Tool 07 behavior.
+1. **Dates.** Keep the effective date. When the policy changes, update "Last updated" in `privacy/index.html` (search for `DATES`), including its `datetime` attribute.
+2. Review both pages against the current Tool 07 behavior before every publication.
 
 ## Preview locally
 
@@ -43,28 +52,28 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 (The local server does not emulate GitHub's 404 handling; open `http://127.0.0.1:8765/404.html` to view that page.)
 
-## Publishing with GitHub Pages (not yet done)
+## Publishing with GitHub Pages
 
-1. Create a GitHub repository and push this folder to its default branch.
+1. The repository is on GitHub (`origin`); publish from its default branch.
 2. Repository **Settings → Pages**: deploy from the default branch, folder `/ (root)`.
 3. Custom domain `analytics.lyfeisacircus.com` (already in `CNAME`), then enable **Enforce HTTPS** once the certificate is issued.
 4. DNS (GoDaddy): add a `CNAME` record for host `analytics` pointing to `<github-username>.github.io`. Consider verifying the domain in GitHub to prevent takeover.
 5. In Google Cloud (OAuth branding), set the application home page to `https://analytics.lyfeisacircus.com/` and the privacy policy to `https://analytics.lyfeisacircus.com/privacy/`. Google may require the domain to be verified in Google Search Console and added as an authorized domain.
 
-## Phase 3 prerequisites described by the privacy policy
+## Phase 3 compliance requirements described by the privacy policy
 
-The privacy policy describes how YouTube data **will** be handled once live collection is enabled. Tool 07 must implement and test all of the following before any live YouTube data is stored (YouTube API Services Developer Policies §III.A, §III.D.2, §III.E.4):
+Tool 07 had to implement and test all of the following before any live YouTube data was stored (YouTube API Services Developer Policies §III.A, §III.D.2, §III.E.4). All were implemented and tested before the first live collection on September 29, 2026:
 
-- [ ] `--revoke`: revoke the token with Google immediately, delete the Keychain item and delete stored YouTube data within 7 days.
-- [ ] `--delete-data`: delete stored YouTube data on request within 7 days.
-- [ ] Authorization re-check at least every 30 days; delete stored data within 30 days if authorization is revoked or cannot be renewed.
-- [ ] 30-day refresh-or-delete for non-statistical YouTube data (titles, descriptions, channel name and handle).
-- [ ] Check at least every 30 days for deleted videos and delete their stored data.
-- [ ] Live custom date ranges use direct API queries; no calculated values stand in for YouTube metrics.
-- [ ] Calculated figures are shown alongside their YouTube source values and labeled as calculated by TTAT Analytics.
-- [ ] YouTube Terms of Service link and agreement statement, plus a link to this privacy policy, in Tool 07's sign-in, dashboard and reports.
-- [ ] Live YouTube data stored only in `~/Library/Application Support/TTAT/Analytics/data/`, outside TTAT_STUDIO and its backups.
-- [ ] Tool 07 analytics logs move from `TTAT_STUDIO/.ttat/logs` to the controlled local Application Support analytics area (`~/Library/Application Support/TTAT/Analytics/`) before live collection, because logs can contain YouTube channel IDs and other API-derived identifiers.
-- [ ] Raw API records are immutable during their permitted lifetime and never silently overwritten; policy-required expiration and deletion are explicit, logged operations.
+- [x] `--revoke`: revoke the token with Google, delete the Keychain item and delete stored YouTube data (immediately; a revocation Google does not confirm needs the operator's confirmation before local removal).
+- [x] `--delete-data`: delete stored YouTube data on request (immediately).
+- [x] Authorization re-check on every collection and `--check`; if sign-in stops working, stored data is deleted at the first run at least 7 days later unless access is restored.
+- [x] 30-day refresh-or-delete for non-statistical YouTube data (titles, publish times, durations, channel name and handle). Descriptions and tags are never collected.
+- [x] Removed-video check on every collection, deleting stored data for removed videos.
+- [x] Live custom date ranges use direct API queries; no calculated values stand in for YouTube metrics.
+- [x] Calculated figures are labeled as calculated by TTAT Analytics.
+- [x] YouTube Terms of Service agreement statement and privacy-policy link at sign-in, on every collection and in collection summaries. (Dashboard: to be added with the dashboard.)
+- [x] Live YouTube data stored only in `~/Library/Application Support/TTAT/Analytics/data/`, outside TTAT_STUDIO and its backups.
+- [x] New Tool 07 analytics logs written to `~/Library/Application Support/TTAT/Analytics/logs/`, because logs can contain YouTube channel IDs.
+- [x] Raw API records are immutable during their permitted lifetime and never silently overwritten; policy-required expiration and deletion are explicit, logged operations.
 
-When live collection is enabled, update the privacy policy's "Current status" sections and its effective date.
+**Operational commitment:** Tool 07 applies these rules only when it runs. The policy therefore commits the operator to running TTAT Analytics (or deleting the stored data) at least every 30 days while YouTube data is stored, and to ensuring deletion within 30 days of any revocation.

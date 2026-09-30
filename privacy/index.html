@@ -30,8 +30,8 @@
     <div class="wrap">
       <p class="eyebrow">TTAT Analytics</p>
       <h1>Privacy Policy</h1>
-      <!-- EFFECTIVE DATE: update this single line to the actual publication date before deploying. -->
-      <p class="effective">Effective date: <time datetime="2026-09-29">September 29, 2026</time></p>
+      <!-- DATES: keep the effective date; update "Last updated" (text and datetime) whenever the policy changes. -->
+      <p class="effective">Effective date: <time datetime="2026-09-29">September 29, 2026</time> · Last updated: <time datetime="2026-09-29">September 29, 2026</time></p>
       <p class="lead">This policy explains what information TTAT Analytics accesses through Google and YouTube, how it is used, where it is stored, when it is shared and how access can be removed.</p>
 
       <nav class="toc" aria-labelledby="toc-heading">
@@ -62,7 +62,7 @@
       <section aria-labelledby="status">
         <h2 id="status">2. Current status</h2>
         <div class="notice">
-          <p>TTAT Analytics is under active development. Google sign-in and read-only access checks are in place. <strong>Live collection of YouTube data has not yet been enabled, and no YouTube data is currently stored.</strong> Where this policy describes how YouTube data will be stored, refreshed or deleted, it describes the behavior that will apply once live collection is enabled; live collection will not be enabled until those safeguards are in place.</p>
+          <p>TTAT Analytics collects live, read-only YouTube channel and analytics data for the Thirty Three And A Third channel when its operator runs it, and stores that data only on the operator's Mac. It remains a private, internal utility for this one channel; it is not a public analytics service and is not offered to other channels. The storage, refresh and deletion practices described in this policy are in effect.</p>
         </div>
       </section>
 
@@ -79,12 +79,16 @@
           <li><code>https://www.googleapis.com/auth/youtube.readonly</code><br>View your YouTube account information.</li>
           <li><code>https://www.googleapis.com/auth/yt-analytics.readonly</code><br>View YouTube Analytics reports for your content.</li>
         </ul>
-        <p>Using those permissions, TTAT Analytics accesses:</p>
+        <p>TTAT Analytics collects data only for the Thirty Three And A Third channel; a sign-in for any other channel is refused before anything is stored. Using the two permissions above, it accesses and stores:</p>
         <ul>
-          <li><strong>Channel identity:</strong> the channel ID, channel name and handle, used to confirm that the correct channel has been authorized.</li>
-          <li><strong>Channel and video details (once live collection is enabled):</strong> the channel's list of uploads, video titles, publication dates, durations and public statistics such as view and subscriber counts.</li>
-          <li><strong>YouTube Analytics reports (once live collection is enabled):</strong> aggregated performance figures for the channel and its videos, such as views, watch time, average view duration, average percentage viewed, likes, comments, shares and subscribers gained and lost, by day or by period. Where YouTube provides them, these may include aggregated breakdowns such as traffic sources, devices, geography and audience demographics.</li>
+          <li><strong>Channel information:</strong> the channel ID, name, handle and creation date, and channel statistics such as subscriber, view and video counts.</li>
+          <li><strong>Video information:</strong> video IDs, titles, publication times, durations and privacy status, and public statistics such as view, like and comment counts.</li>
+          <li><strong>YouTube Analytics reports:</strong> aggregated performance figures for the channel and its videos, by day and by period: views, estimated watch time, average view duration, average percentage viewed, subscribers gained and lost, likes, comments and shares.</li>
+          <li><strong>Audience retention,</strong> for videos where YouTube provides it.</li>
+          <li><strong>Aggregated breakdowns</strong> by traffic source, country, device type, playback location and subscriber status, where YouTube provides them.</li>
+          <li><strong>Shorts or regular video:</strong> each video's classification, taken from YouTube Analytics' own content-type reporting. Videos that YouTube has not yet classified are recorded as unknown.</li>
         </ul>
+        <p>Video descriptions and tags are intentionally not collected. Not every figure is available for every video or period; figures YouTube does not provide are recorded as unavailable and are never estimated.</p>
         <p>YouTube Analytics reports are aggregated statistics. TTAT Analytics does not request or receive personal information about individual viewers, and it does not access the contents of your Google Account beyond the YouTube information described above.</p>
       </section>
 
@@ -96,7 +100,7 @@
 
       <section aria-labelledby="calculated">
         <h2 id="calculated">6. Calculated figures</h2>
-        <p>Some figures are calculated by TTAT Analytics from YouTube data, for example net subscriber change (subscribers gained minus subscribers lost) and subscribers per 1,000 views. These figures are identified as calculations made by TTAT Analytics, are shown together with the YouTube values they are based on and are never presented as YouTube metrics.</p>
+        <p>TTAT Analytics may calculate additional values from YouTube-provided data, for example net subscriber change (subscribers gained minus subscribers lost), watch time in hours and views per day. These values are identified as calculations made by TTAT Analytics, are shown together with the YouTube values they are based on and are never presented as YouTube-provided metrics.</p>
       </section>
 
       <section aria-labelledby="storage">
@@ -108,39 +112,38 @@
           <li>Short-lived access tokens are held in memory while TTAT Analytics runs and are not written to files.</li>
           <li>Credentials, tokens and client secrets are never included in reports or in this website.</li>
         </ul>
+        <h3>YouTube data and reports</h3>
+        <p>Collected YouTube data, and the summaries generated from it, are stored only on the local disk of the operator's Mac, in TTAT Analytics' own application data area, in folders that only the operator's macOS user account can open. This data is kept separate from the channel's shared production storage and its normal production backups. It is not stored on this website, on any server operated by Thirty Three And A Third or in any cloud service.</p>
         <h3>Activity logs</h3>
-        <p>TTAT Analytics keeps local activity logs on the channel's private production storage. They record events such as sign-in attempts, the channel ID confirmed or declined during sign-in, and errors. Logs are filtered to exclude credentials and tokens.</p>
-        <h3>YouTube data (once live collection is enabled)</h3>
-        <p>YouTube data retrieved by TTAT Analytics will be stored only on the local disk of the operator's computer, in TTAT Analytics' own application data folder. It will be kept separate from the channel's shared production storage and its backups, and it is not stored on this website or on any server operated by Thirty Three And A Third. Reports and visualizations are generated locally from that data.</p>
+        <p>TTAT Analytics keeps activity logs in the same local application data area. They record events such as sign-in checks, the channel ID confirmed during sign-in, collection results and errors. Logs are filtered to exclude credentials and tokens.</p>
       </section>
 
       <section aria-labelledby="sharing">
         <h2 id="sharing">8. Sharing</h2>
         <ul>
           <li>Information obtained from Google is <strong>not sold</strong>, and it is <strong>not shared with advertisers, data brokers or information resellers</strong>.</li>
-          <li><strong>AI-assisted analysis.</strong> At the operator's own direction, reports generated by TTAT Analytics may be provided to an AI assistant, such as ChatGPT from OpenAI, to help analyze the channel's performance. These reports contain channel and video performance information. They never intentionally include OAuth credentials, access tokens, refresh tokens, client secrets or other authentication material. Once a report has been provided to an AI assistant, that copy is handled under the provider's own terms and privacy policy (for OpenAI, see the <a href="https://openai.com/policies/privacy-policy/">OpenAI Privacy Policy</a>) and cannot be deleted by TTAT Analytics.</li>
+          <li><strong>AI-assisted analysis.</strong> At the operator's own direction, reports generated by TTAT Analytics may be provided to an AI assistant, such as ChatGPT from OpenAI, to help analyze the channel's performance. TTAT Analytics never sends data to an AI service by itself; a report is shared only when the operator chooses to provide it. These reports contain channel and video performance information. They never intentionally include OAuth credentials, access tokens, refresh tokens, client secrets or other authentication material. Once a report has been provided to an AI assistant, that copy is handled under the provider's own terms and privacy policy (for OpenAI, see the <a href="https://openai.com/policies/privacy-policy/">OpenAI Privacy Policy</a>) and cannot be deleted by TTAT Analytics.</li>
           <li>Information is not otherwise shared with anyone, except where disclosure is required by law.</li>
         </ul>
       </section>
 
       <section aria-labelledby="retention">
         <h2 id="retention">9. Retention, refresh and deletion</h2>
-        <p><strong>Today:</strong> no YouTube data is stored, so there is no YouTube data to delete. The sign-in credentials described in section 7 exist only on the operator's computer. A saved refresh token can be removed at any time by deleting it from the macOS Keychain and by revoking access as described in section 10.</p>
-        <p><strong>Once live collection is enabled,</strong> TTAT Analytics will follow the YouTube API Services Developer Policies:</p>
+        <p>TTAT Analytics runs only when the operator starts it; it has no background process. Each time it collects data or checks its sign-in, it applies the rules below, which follow the YouTube API Services Developer Policies. So that these checks happen within the policies' time limits, the operator runs TTAT Analytics at least every 30 days while YouTube data is stored, or deletes the stored data.</p>
         <ul>
-          <li>YouTube Analytics results and statistics will be kept only as long as needed to analyze the channel's performance, and only while authorization remains active. TTAT Analytics will confirm at least every 30 days that its authorization is still valid.</li>
-          <li>Other YouTube information, such as video titles, descriptions and the channel name, will be refreshed or deleted within 30 days.</li>
-          <li>TTAT Analytics will check at least every 30 days whether videos still exist and will delete stored data about videos that have been removed.</li>
-          <li>Signing out within TTAT Analytics will revoke its access with Google immediately and delete stored YouTube data within 7 days.</li>
-          <li>A request to delete stored data, made to the contact address below, will be completed within 7 days.</li>
-          <li>If access is revoked through your Google Account, or if authorization can no longer be renewed, stored YouTube data will be deleted within 30 days.</li>
+          <li><strong>Statistics and analytics results</strong> are kept only as long as needed to analyze the channel's performance, and only while authorization remains active. Authorization is confirmed each time TTAT Analytics collects data or checks its sign-in.</li>
+          <li><strong>Titles, publication times, durations and the channel name and handle</strong> are refreshed each time data is collected. Copies older than 30 days, including collection summaries that contain titles, are deleted the next time TTAT Analytics collects data or checks its sign-in.</li>
+          <li><strong>Removed videos:</strong> each collection checks which videos still exist and deletes stored data about videos that have been removed, including stored API responses that mention them.</li>
+          <li><strong>If sign-in stops working</strong> because access was revoked or can no longer be renewed, TTAT Analytics records this. Unless access is restored, it deletes the stored YouTube data the first time it collects data or checks its sign-in at least 7 days later. Because TTAT Analytics is used only by the channel's operator, the operator will also ensure that stored YouTube data is deleted within 30 days of any revocation.</li>
+          <li><strong>Signing out within TTAT Analytics</strong> asks Google to revoke its access, removes the saved sign-in from the macOS Keychain and immediately deletes all stored YouTube data, summaries and earlier activity logs from its application data area on the operator's computer. If Google does not confirm the revocation, nothing is removed locally without the operator's confirmation.</li>
+          <li><strong>Deleting data without signing out:</strong> TTAT Analytics can immediately delete all stored YouTube data, summaries and earlier activity logs from its application data area while keeping the sign-in. A deletion request sent to the contact address below will be completed within 7 days.</li>
         </ul>
-        <p>Records of raw YouTube responses are never silently overwritten. Deletions required by these rules are carried out as explicit, logged operations.</p>
+        <p>Records of raw YouTube responses are not changed while they may be kept and are never silently overwritten. Deletions required by these rules are carried out as explicit, logged operations.</p>
       </section>
 
       <section aria-labelledby="revoke">
         <h2 id="revoke">10. Revoking access</h2>
-        <p>In addition to TTAT Analytics' own procedure for deleting stored data, you can revoke TTAT Analytics' access to your data at any time through the Google security settings page: <a href="https://security.google.com/settings/security/permissions">https://security.google.com/settings/security/permissions</a>. Revoking access there stops TTAT Analytics from retrieving any further information.</p>
+        <p>In addition to TTAT Analytics' own sign-out and deletion procedures described in section 9, you can revoke TTAT Analytics' access to your data at any time through the Google security settings page: <a href="https://security.google.com/settings/security/permissions">https://security.google.com/settings/security/permissions</a>. Revoking access there stops TTAT Analytics from retrieving any further information; stored data is then deleted as described in section 9.</p>
       </section>
 
       <section aria-labelledby="website">
@@ -151,7 +154,7 @@
 
       <section aria-labelledby="changes">
         <h2 id="changes">12. Changes to this policy</h2>
-        <p>If this policy changes, for example when live collection is enabled, the updated policy will be published on this page with a new effective date.</p>
+        <p>If TTAT Analytics' data practices change, the updated policy will be published on this page with a new "Last updated" date.</p>
       </section>
 
       <section aria-labelledby="contact">
