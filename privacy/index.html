@@ -31,7 +31,7 @@
       <p class="eyebrow">TTAT Analytics</p>
       <h1>Privacy Policy</h1>
       <!-- DATES: keep the effective date; update "Last updated" (text and datetime) whenever the policy changes. -->
-      <p class="effective">Effective date: <time datetime="2026-09-29">September 29, 2026</time> · Last updated: <time datetime="2026-09-29">September 29, 2026</time></p>
+      <p class="effective">Effective date: <time datetime="2026-09-29">September 29, 2026</time> · Last updated: <time datetime="2026-09-30">September 30, 2026</time></p>
       <p class="lead">This policy explains what information TTAT Analytics accesses through Google and YouTube, how it is used, where it is stored, when it is shared and how access can be removed.</p>
 
       <nav class="toc" aria-labelledby="toc-heading">
@@ -62,7 +62,7 @@
       <section aria-labelledby="status">
         <h2 id="status">2. Current status</h2>
         <div class="notice">
-          <p>TTAT Analytics collects live, read-only YouTube channel and analytics data for the Thirty Three And A Third channel when its operator runs it, and stores that data only on the operator's Mac. It remains a private, internal utility for this one channel; it is not a public analytics service and is not offered to other channels. The storage, refresh and deletion practices described in this policy are in effect.</p>
+          <p>TTAT Analytics collects live, read-only YouTube channel and analytics data for the Thirty Three And A Third channel when its operator runs it, and stores that data on the operator's Mac. If the operator turns on email delivery, TTAT Analytics also emails its Performance Report to an address the operator controls (see sections 7–9). It remains a private, internal utility for this one channel; it is not a public analytics service and is not offered to other channels. The storage, refresh and deletion practices described in this policy are in effect.</p>
         </div>
       </section>
 
@@ -113,9 +113,11 @@
           <li>Credentials, tokens and client secrets are never included in reports or in this website.</li>
         </ul>
         <h3>YouTube data and reports</h3>
-        <p>Collected YouTube data, and the summaries generated from it, are stored only on the local disk of the operator's Mac, in TTAT Analytics' own application data area, in folders that only the operator's macOS user account can open. This data is kept separate from the channel's shared production storage and its normal production backups. It is not stored on this website, on any server operated by Thirty Three And A Third or in any cloud service.</p>
+        <p>Collected YouTube data, and the summaries generated from it, are stored only on the local disk of the operator's Mac, in TTAT Analytics' own application data area, in folders that only the operator's macOS user account can open. This data is kept separate from the channel's shared production storage and its normal production backups. It is not stored on this website or on any server operated by Thirty Three And A Third. TTAT Analytics does not upload it to any cloud service; the only exception is the optional email delivery described below.</p>
+        <h3>Email delivery (optional)</h3>
+        <p>If the operator turns it on, TTAT Analytics can email its Performance Report to an address the operator controls, automatically after a successful collection or when the operator requests it. The report is attached to a short message that names the channel and the collection date. Sending uses Apple Mail and an email account already set up on the operator's Mac; TTAT Analytics does not store any email password or email-account credentials. Only the recipient address is stored, in a settings file on the operator's Mac that only the operator's user account can read. Emailed reports contain channel and video performance information, including video titles. They never intentionally include OAuth credentials, access tokens, refresh tokens, client secrets or other authentication material. An emailed copy is transmitted and stored by the email providers involved, in the sender's Sent mailbox and the recipient's mailbox, under those providers' own terms and privacy policies. Email delivery is off unless the operator turns it on, and it can be turned off at any time.</p>
         <h3>Activity logs</h3>
-        <p>TTAT Analytics keeps activity logs in the same local application data area. They record events such as sign-in checks, the channel ID confirmed during sign-in, collection results and errors. Logs are filtered to exclude credentials and tokens.</p>
+        <p>TTAT Analytics keeps activity logs in the same local application data area. They record events such as sign-in checks, the channel ID confirmed during sign-in, collection results and errors. Logs are filtered to exclude credentials and tokens. Email delivery is logged only as sent, failed or skipped, without the recipient address or the message contents.</p>
       </section>
 
       <section aria-labelledby="sharing">
@@ -123,6 +125,7 @@
         <ul>
           <li>Information obtained from Google is <strong>not sold</strong>, and it is <strong>not shared with advertisers, data brokers or information resellers</strong>.</li>
           <li><strong>AI-assisted analysis.</strong> At the operator's own direction, reports generated by TTAT Analytics may be provided to an AI assistant, such as ChatGPT from OpenAI, to help analyze the channel's performance. TTAT Analytics never sends data to an AI service by itself; a report is shared only when the operator chooses to provide it. These reports contain channel and video performance information. They never intentionally include OAuth credentials, access tokens, refresh tokens, client secrets or other authentication material. Once a report has been provided to an AI assistant, that copy is handled under the provider's own terms and privacy policy (for OpenAI, see the <a href="https://openai.com/policies/privacy-policy/">OpenAI Privacy Policy</a>) and cannot be deleted by TTAT Analytics.</li>
+          <li><strong>Email delivery to the operator.</strong> If the operator turns on email delivery, TTAT Analytics sends its Performance Report by email to an address the operator controls. Reports are not emailed to anyone else, and TTAT Analytics sends no other email.</li>
           <li>Information is not otherwise shared with anyone, except where disclosure is required by law.</li>
         </ul>
       </section>
@@ -137,6 +140,7 @@
           <li><strong>If sign-in stops working</strong> because access was revoked or can no longer be renewed, TTAT Analytics records this. Unless access is restored, it deletes the stored YouTube data the first time it collects data or checks its sign-in at least 7 days later. Because TTAT Analytics is used only by the channel's operator, the operator will also ensure that stored YouTube data is deleted within 30 days of any revocation.</li>
           <li><strong>Signing out within TTAT Analytics</strong> asks Google to revoke its access, removes the saved sign-in from the macOS Keychain and immediately deletes all stored YouTube data, summaries and earlier activity logs from its application data area on the operator's computer. If Google does not confirm the revocation, nothing is removed locally without the operator's confirmation.</li>
           <li><strong>Deleting data without signing out:</strong> TTAT Analytics can immediately delete all stored YouTube data, summaries and earlier activity logs from its application data area while keeping the sign-in. A deletion request sent to the contact address below will be completed within 7 days.</li>
+          <li><strong>Emailed reports</strong> are copies outside TTAT Analytics' application data area, so signing out, deleting data and the 30-day refresh cannot remove them. Because they contain titles, the operator deletes emailed reports from the mailboxes they control within 30 days of receipt, and promptly after access is revoked or data deletion is requested.</li>
         </ul>
         <p>Records of raw YouTube responses are not changed while they may be kept and are never silently overwritten. Deletions required by these rules are carried out as explicit, logged operations.</p>
       </section>
