@@ -10,7 +10,7 @@ This is the public website for the **TTAT Analytics** OAuth application: the hom
 
 - **OAuth sign-in (Tool 07):** working. Read-only scopes only (`youtube.readonly`, `yt-analytics.readonly`); the refresh token is kept in the macOS Keychain.
 - **Live collection:** working, for the Thirty Three And A Third channel only.
-- **Storage:** active, on the operator's Mac in TTAT Analytics' Application Support area, outside the shared TTAT production storage and its backups. New logs are kept there as well.
+- **Storage:** active, on the operator's Mac in TTAT Analytics' Application Support area, outside the shared TTAT production storage and its backups. New logs are kept there as well. A copy may also be kept in a private Google Cloud Storage bucket for operator-started GitHub Actions jobs (see the Privacy Policy).
 - **Compliance lifecycle controls:** implemented (sign-out with revocation, data deletion, authorization re-checks, 30-day metadata expiry, removed-video purge). They run when the operator runs Tool 07; nothing runs in the background.
 - **This website:** informational and privacy-policy infrastructure only. It never contains or displays channel analytics.
 - **Dashboard:** separate work, not yet complete.
@@ -72,7 +72,7 @@ Tool 07 had to implement and test all of the following before any live YouTube d
 - [x] Live custom date ranges use direct API queries; no calculated values stand in for YouTube metrics.
 - [x] Calculated figures are labeled as calculated by TTAT Analytics.
 - [x] YouTube Terms of Service agreement statement and privacy-policy link at sign-in, on every collection and in collection summaries. (Dashboard: to be added with the dashboard.)
-- [x] Live YouTube data stored only in `~/Library/Application Support/TTAT/Analytics/data/`, outside TTAT_STUDIO and its backups.
+- [x] Live YouTube data stored locally in `~/Library/Application Support/TTAT/Analytics/data/`, outside TTAT_STUDIO and its backups; any cloud copy is kept only in a private Google Cloud Storage bucket, under the same rules (see the Privacy Policy).
 - [x] New Tool 07 analytics logs written to `~/Library/Application Support/TTAT/Analytics/logs/`, because logs can contain YouTube channel IDs.
 - [x] Raw API records are immutable during their permitted lifetime and never silently overwritten; policy-required expiration and deletion are explicit, logged operations.
 
