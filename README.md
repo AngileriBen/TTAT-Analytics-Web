@@ -6,12 +6,13 @@ This is the public website for the **TTAT Analytics** OAuth application: the hom
 - Homepage: `index.html` · Privacy Policy: `privacy/index.html` (served at `/privacy/`)
 - Operator: Thirty Three And A Third · Contact: thirtythreeandathirdtv@gmail.com
 
-## Implementation status (September 29, 2026)
+## Implementation status (October 2, 2026)
 
-- **OAuth sign-in (Tool 07):** working. Read-only scopes only (`youtube.readonly`, `yt-analytics.readonly`); the refresh token is kept in the macOS Keychain.
+- **OAuth sign-in (Tool 07):** working. Read-only scopes only (`youtube.readonly`, `yt-analytics.readonly`); on the Mac the refresh token is kept in the macOS Keychain.
 - **Live collection:** working, for the Thirty Three And A Third channel only.
-- **Storage:** active, on the operator's Mac in TTAT Analytics' Application Support area, outside the shared TTAT production storage and its backups. New logs are kept there as well. A copy may also be kept in a private Google Cloud Storage bucket for operator-started GitHub Actions jobs (see the Privacy Policy).
-- **Compliance lifecycle controls:** implemented (sign-out with revocation, data deletion, authorization re-checks, 30-day metadata expiry, removed-video purge). They run when the operator runs Tool 07; nothing runs in the background.
+- **Storage:** active, on the operator's Mac in TTAT Analytics' Application Support area, outside the shared TTAT production storage and its backups. New logs are kept there as well. A copy may also be kept in a private Google Cloud Storage bucket for GitHub Actions jobs (see the Privacy Policy).
+- **Compliance lifecycle controls:** implemented (sign-out with revocation, data deletion, authorization re-checks, 30-day metadata expiry, removed-video purge). They run whenever Tool 07 runs, on the Mac or in a GitHub Actions job.
+- **Automated daily cloud job and emailed briefing:** described in the Privacy Policy (separate "TTAT Analytics Cloud" OAuth client with its credentials in Google Secret Manager; briefing sent through Resend from `reports@analytics.lyfeisacircus.com`). Being implemented; not yet turned on.
 - **This website:** informational and privacy-policy infrastructure only. It never contains or displays channel analytics.
 - **Dashboard:** separate work, not yet complete.
 
@@ -19,7 +20,7 @@ This is the public website for the **TTAT Analytics** OAuth application: the hom
 
 - Static HTML and CSS only. **No JavaScript, cookies, analytics, tracking, advertising, web fonts or third-party resources.**
 - Every page carries a strict Content Security Policy (`default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'`) as a `<meta>` tag, because GitHub Pages cannot set HTTP headers. (`frame-ancestors` cannot be set this way.)
-- Outbound links (YouTube Terms of Service, Google Privacy Policy, Google Account permissions, OpenAI and GitHub privacy policies) are ordinary links; nothing is loaded from them.
+- Outbound links (YouTube Terms of Service, Google Privacy Policy, Google Account permissions, OpenAI, GitHub and Resend privacy documents) are ordinary links; nothing is loaded from them.
 - It contains no secrets. Never add OAuth client files, tokens or credentials to this repository; `.gitignore` blocks the common file names as a safeguard.
 
 ## Files
@@ -76,4 +77,4 @@ Tool 07 had to implement and test all of the following before any live YouTube d
 - [x] New Tool 07 analytics logs written to `~/Library/Application Support/TTAT/Analytics/logs/`, because logs can contain YouTube channel IDs.
 - [x] Raw API records are immutable during their permitted lifetime and never silently overwritten; policy-required expiration and deletion are explicit, logged operations.
 
-**Operational commitment:** Tool 07 applies these rules only when it runs. The policy therefore commits the operator to running TTAT Analytics (or deleting the stored data) at least every 30 days while YouTube data is stored, and to ensuring deletion within 30 days of any revocation.
+**Operational commitment:** Tool 07 applies these rules only when it runs (on the Mac, in an operator-started job or, once enabled, in the daily scheduled job). The policy therefore commits the operator to running TTAT Analytics (or deleting the stored data) at least every 30 days while YouTube data is stored, and to ensuring deletion within 30 days of any revocation, including revoking and deleting the cloud job's refresh token when the cloud copy must be deleted.
