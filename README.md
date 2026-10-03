@@ -12,7 +12,7 @@ This is the public website for the **TTAT Analytics** OAuth application: the hom
 - **Live collection:** working, for the Thirty Three And A Third channel only.
 - **Storage:** active, on the operator's Mac in TTAT Analytics' Application Support area, outside the shared TTAT production storage and its backups. New logs are kept there as well. A copy may also be kept in a private Google Cloud Storage bucket for GitHub Actions jobs (see the Privacy Policy).
 - **Compliance lifecycle controls:** implemented (sign-out with revocation, data deletion, authorization re-checks, 30-day metadata expiry, removed-video purge). They run whenever Tool 07 runs, on the Mac or in a GitHub Actions job.
-- **Automated daily cloud job and emailed briefing:** described in the Privacy Policy (separate "TTAT Analytics Cloud" OAuth client with its credentials in Google Secret Manager; briefing sent through Resend from `reports@analytics.lyfeisacircus.com`). Being implemented; not yet turned on.
+- **Automated daily cloud job and emailed briefing:** described in the Privacy Policy (separate "TTAT Analytics Cloud" OAuth client with its credentials in Google Secret Manager; briefing sent through Resend from `briefing@reports.lyfeisacircus.com`). Being implemented; not yet turned on.
 - **This website:** informational and privacy-policy infrastructure only. It never contains or displays channel analytics.
 - **Dashboard:** separate work, not yet complete.
 
